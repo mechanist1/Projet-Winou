@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { PostComponent } from './post/post.component';
+import { FindComponent } from './find/find.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AboutComponent,
     ContactComponent,
     SignInComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    PostComponent,
+    FindComponent
   ],
   imports: [
     BrowserModule,
