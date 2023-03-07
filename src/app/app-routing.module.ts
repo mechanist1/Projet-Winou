@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PostComponent } from './post/post.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [{path:'',component: HomeComponent},
 {path:'about',component:AboutComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [{path:'',component: HomeComponent},
 {path:'post',component:PostComponent},
 {path:'find',component:FindComponent},
 {path:'signin',component:SignInComponent},
+{path:'signup',component:SignUpComponent},
 {path:'**',component:NotfoundComponent},
 ];
 

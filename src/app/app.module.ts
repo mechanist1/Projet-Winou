@@ -12,6 +12,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PostComponent } from './post/post.component';
 import { FindComponent } from './find/find.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FindComponent } from './find/find.component';
     SignInComponent,
     NotfoundComponent,
     PostComponent,
-    FindComponent
+    FindComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
