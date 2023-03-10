@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
+
 import { ContactComponent } from './contact/contact.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -20,7 +20,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent,
+    
     ContactComponent,
     SignInComponent,
     NotfoundComponent,
