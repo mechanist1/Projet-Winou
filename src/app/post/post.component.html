@@ -14,14 +14,14 @@
 <div class="container mt-4">
 
 
-    <h2 class="text-center"> Create article  </h2> 
+    <h2 class="text-center"> {{ mytest }}  </h2> 
     <pre></pre>
     
     <div class="col-6 mx-auto">
         <h5>Title</h5>
-        <input  type="text" class="form-control m-1" id="titleeeee">
+        <input  type="text" class="form-control m-1">
         <h5>Object</h5>
-        <input  type="text" class="form-control m-1"  id="object">
+        <input  type="text" class="form-control m-1" [(ngModel)]="mytest">
         <h5>Short Description</h5>
         <input  type="text" class="form-control m-1"  id="des">
         
