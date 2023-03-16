@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
    
- mytest:string="";
+ object:string="";
+ title:string="";
+ des:string="";
+ date:any="" ;
+ detail:string="";
+ type:string="cash";
+ place:string="o1";
+ pic:any="o1";
+ 
+
+
+
+
+
+
   constructor(){
   let hello="hi";
   

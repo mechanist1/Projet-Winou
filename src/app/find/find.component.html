@@ -19,15 +19,15 @@
     
     <div class="col-6 mx-auto">
         <h5>Title</h5>
-        <input  type="text" class="form-control m-1"  id="title">
+        <input  type="text" class="form-control m-1"  id="title" [(ngModel)]="ftitle">
         <h5>Object</h5>
-        <input  type="text" class="form-control m-1" id="object">
+        <input  type="text" class="form-control m-1" id="object" [(ngModel)]="fobject" >
        
         <p>
         </p>
         <label for="options"><h5>Select Type:</h5></label><br>
         
-        <select id="options">
+        <select id="options" [(ngModel)]="ftype">
          
           <option value="electronic">Electronics&Multimedia</option>
           <option value="clothing">Clothing</option>
@@ -43,39 +43,39 @@
         <p></p>
         <label for="options"><h5>Select region:</h5></label><br>
         
-<select id="options">
+<select id="options" [(ngModel)]="fplace ">
  
-  <option value="o1">Ariana</option>
-  <option value="o2">Béja</option>
-  <option value="o3">Ben Arous</option>
-  <option value="o4">Bizerte</option>
-  <option value="o5">Gabès</option>
-  <option value="o6">Gafsa</option>
-  <option value="o7">Jendouba</option>
-  <option value="o8">Kairouan</option>
-  <option value="o9">Kasserine</option>
-  <option value="o10">Kebili</option>
-  <option value="o11">Kef</option>
-  <option value="o12">Mahdia</option>
-  <option value="o13">Manouba</option>
-  <option value="o14">Medenine</option>
-  <option value="o15">Monastir</option>
-  <option value="o16">Nabeul</option>
-  <option value="o17">Sfax</option>
-  <option value="o18">Sidi Bouzid</option>
-  <option value="o19">Siliana</option>
-  <option value="o20">Sousse</option>
-  <option value="o21">Tataouine</option>
-  <option value="o22">Tozeur</option>
-  <option value="o23">Tunis</option>
-  <option value="o24">Zaghouan</option>
+  <option value="op1">Ariana</option>
+  <option value="op2">Béja</option>
+  <option value="op3">Ben Arous</option>
+  <option value="op4">Bizerte</option>
+  <option value="op5">Gabès</option>
+  <option value="op6">Gafsa</option>
+  <option value="op7">Jendouba</option>
+  <option value="op8">Kairouan</option>
+  <option value="op9">Kasserine</option>
+  <option value="op10">Kebili</option>
+  <option value="op11">Kef</option>
+  <option value="op12">Mahdia</option>
+  <option value="op13">Manouba</option>
+  <option value="op14">Medenine</option>
+  <option value="op15">Monastir</option>
+  <option value="op16">Nabeul</option>
+  <option value="op17">Sfax</option>
+  <option value="op18">Sidi Bouzid</option>
+  <option value="op19">Siliana</option>
+  <option value="op20">Sousse</option>
+  <option value="op21">Tataouine</option>
+  <option value="op22">Tozeur</option>
+  <option value="op23">Tunis</option>
+  <option value="op24">Zaghouan</option>
   
   
 </select>
 <br>
 <br>
 <h5>Select time of losing:</h5><br>
-<input type="date" id="date1">
+<input type="date" id="date1" [(ngModel)]="fdate">
    
         
         <pre>

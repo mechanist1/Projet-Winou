@@ -14,22 +14,22 @@
 <div class="container mt-4">
 
 
-    <h2 class="text-center"> {{ mytest }}  </h2> 
+    <h2 class="text-center"> create article  </h2> 
     <pre></pre>
     
     <div class="col-6 mx-auto">
         <h5>Title</h5>
-        <input  type="text" class="form-control m-1">
+        <input  type="text" class="form-control m-1" [(ngModel)]="title">
         <h5>Object</h5>
-        <input  type="text" class="form-control m-1" [(ngModel)]="mytest">
+        <input  type="text" class="form-control m-1" [(ngModel)]="object">
         <h5>Short Description</h5>
-        <input  type="text" class="form-control m-1"  id="des">
+        <input  type="text" class="form-control m-1"  id="des" [(ngModel)]="des">
         
         <p>
         </p>
         <label for="options"><h5>Select Type:</h5></label><br>
         
-        <select id="options">
+        <select id="options" [(ngModel)]="type">
          
           <option value="electronic">Electronics&Multimedia</option>
           <option value="clothing">Clothing</option>
@@ -45,7 +45,7 @@
         <p></p>
         <label for="options"><h5>Select region:</h5></label><br>
         
-<select id="options">
+<select id="options" [(ngModel)]="place" >
  
   <option value="o1">Ariana</option>
   <option value="o2">Béja</option>
@@ -77,18 +77,18 @@
 <br>
 <br>
 <h5>Select time of finding:</h5><br>
-<input type="date" id="date1">
+<input type="date" id="date1" [(ngModel)]="date">
    
         
         <pre>
 
         </pre>
         <h5>Upload picture of item:</h5><br>
-        <input type="file"  class="form-control m-1" placeholder="image" id="img1">
+        <input type="file"  class="form-control m-1" placeholder="image" id="img1" [(ngModel)]="pic">
         <p></p>
 
         <h5>Detailed Description</h5><br>
-        <textarea id="" cols="30" rows="4" placeholder="give a more in depth description" class="form-control m-1" id="des2" ></textarea>
+        <textarea id="" cols="30" rows="4" placeholder="give a more in depth description" class="form-control m-1" id="des2" [(ngModel)]="detail" ></textarea>
 
         
 <p>
