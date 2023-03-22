@@ -7,11 +7,11 @@
 				<div class="contact">
 					<form action="">
 						<h3>SIGN UP</h3>
-						<input type="text" placeholder="USERNAME">
-						<input type="text" placeholder="EMAIL">
-                        <input type="text" placeholder="PASSWORD">
-                        <input type="text" placeholder="REPEAT PASSWORD">
-						<button class="submit">Sign Up </button>
+						<input type="text" placeholder="USERNAME" [(ngModel)]="username">
+						<input type="text" placeholder="EMAIL" [(ngModel)]="email">
+                        <input type="text" placeholder="PASSWORD" [(ngModel)]="pwd">
+                        <input type="text" placeholder="REPEAT PASSWORD" [(ngModel)]="pwdagain">
+						<button class="submit" (click)="signup">Sign Up </button>
 					</form>
 				</div>
 			</div>

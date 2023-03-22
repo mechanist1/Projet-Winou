@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -15,7 +15,29 @@ export class SignUpComponent implements OnInit {
 
 
 
-  constructor(){
+  constructor(private http: HttpClient){}
+
+   
+    signup() : void{
+
+      const data1={
+        username:this.username,
+        email:this.email,
+        pwd:this.pwd,
+        pwdagain:this.pwdagain
+      };
+      
+
+      this.http.post('http://127.0.0.1:3000/sign-up',data1).subscribe(
+        (Response)=>{
+          console.log(Response);
+        }, 
+        (error)=>{
+          console.log(error);
+        }
+      )
+    
+
 
   }
   ngOnInit(): void {
