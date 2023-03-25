@@ -5,13 +5,13 @@
 			<div class="left">
 				<div class="top_link"><a routerLink="/signin"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Already a member?</a></div>
 				<div class="contact">
-					<form action="">
+					<form ngNoForm>
 						<h3>SIGN UP</h3>
 						<input type="text" placeholder="USERNAME" [(ngModel)]="username">
 						<input type="text" placeholder="EMAIL" [(ngModel)]="email">
-                        <input type="text" placeholder="PASSWORD" [(ngModel)]="pwd">
-                        <input type="text" placeholder="REPEAT PASSWORD" [(ngModel)]="pwdagain">
-						<button class="submit" (click)="signup">Sign Up </button>
+                        <input type="password" placeholder="PASSWORD" [(ngModel)]="pwd">
+                        <input type="password" placeholder="REPEAT PASSWORD" [(ngModel)]="pwdagain">
+						<button class="submit" (click)="signup()">Sign Up </button>
 					</form>
 				</div>
 			</div>

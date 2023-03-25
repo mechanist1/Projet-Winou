@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
       };
       
 
-      this.http.post('http://127.0.0.1:3000/sign-up',data1).subscribe(
+      this.http.post('http://127.0.0.1:3000/signup',data1).subscribe(
         (Response)=>{
           console.log(Response);
         }, 

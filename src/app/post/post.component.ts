@@ -26,8 +26,8 @@ export class PostComponent implements OnInit {
   constructor(private http : HttpClient){}
   sent(): void {
     const data = {
-      object: this.object,
       title: this.title,
+      object: this.object,
       des: this.des,
       date: this.date,
       detail: this.detail,
@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
       pic: this.pic
     };
   
-    this.http.post('http://127.0.0.1:3000', data).subscribe(
+    this.http.post( 'http://127.0.0.1:3000/post', data).subscribe(
       (response) => {
         console.log("success");
       },
