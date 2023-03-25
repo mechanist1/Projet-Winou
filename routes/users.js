@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+
+router.post('/signin', (req, res) => {
+  const data = req.body; // Extract data from request body
+  console.log(data); // Log data to console
+  res.send('Received data!!!!!'); // Send response back to clients
 });
+
 
 module.exports = router;
