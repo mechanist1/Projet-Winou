@@ -1,55 +1,78 @@
-var express = require('express');
-var router = express.Router();
-var mongoose=require('mongoose')
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+const upload = multer({ storage: storage });
+
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
+
 const url = 'mongodb://localhost:27017/posts';
 
-
 const postSchema = new mongoose.Schema({
-  title:String,
-  object:String,
-  des:String,
-  date:String,
-  detail:String,
-  type:String,
-  place:String,
-  pic:String
+  title: String,
+  object: String,
+  des: String,
+  date: String,
+  detail: String,
+  type: String,
+  place: String,
+  pic: Buffer
 });
 
 const post = mongoose.model('post', postSchema);
-/* GET home page. */
-router.post('/post', (req, res) => {
-  const data = req.body; // Extract data from request body
-  console.log(data); // Log data to console
 
-  mongoose.connect(url, { useNewUrlParser: true })
-    .then(() => {
-    
-        const pos = new post({ //p stands for posts
-        title:data.title,
-        object:data.object,
-        des:data.des,
-        date:data.date,
-        detail:data.detail,
-        type:data.type,
-        place:data.place,
-        pic:data.pic  
-        
+router.post('/post', upload.single('pic'), (req, res) => {
+  const data = req.body;
+  
+  if (!req.file) {
+    console.log("No file uploaded");
+    res.status(400).send("No file uploaded");
+    return;
+  }
+  
+  const tempPath = req.file.path;
+  const targetPath = path.join(__dirname, "../uploads/" + req.file.filename);
+  fs.rename(tempPath, targetPath, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Internal server error');
+      return;
+    }
+
+    mongoose.connect(url, { useNewUrlParser: true })
+      .then(() => {
+        const pos = new post({
+          title: data.title,
+          object: data.object,
+          des: data.des,
+          date: data.date,
+          detail: data.detail,
+          type: data.type,
+          place: data.place,
+          pic: fs.readFileSync(targetPath)
         });
 
-        return pos.save(); // return the Promise
-     
-    })
-    .then(() => {
-      console.log('post saved successfully');
-      mongoose.disconnect();
-      res.send('Received data!!!!!'); // Send response back to clients after post is saved
-    })
-    .catch(err => {
-      console.log(err);
-    });
+        return pos.save();
+      })
+      .then(() => {
+        console.log('post saved successfully');
+        mongoose.disconnect();
+        res.send('Received data!!!!!');
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).send('Internal server error');
+      });
+  });
 });
-
-
-
 
 module.exports = router;
