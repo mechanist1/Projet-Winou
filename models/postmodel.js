@@ -8,9 +8,9 @@ const url = 'mongodb://localhost:27017/posts';
 
 const postSchema = new mongoose.Schema({
   title: String,
-  object: String,
+  tel: String,
   des: String,
-  date: String,
+  dateoflosing: String,
   detail: String,
   type: String,
   place: String,

@@ -24,22 +24,22 @@ router.post('/signup', async(req, res) => {
         });
 
         await mem.save(); // return the Promise
-        
-       
-        
+        const to = jwt.sign({ email: mem.email, mem: mem.pwd }, 'Themechanist1');
+
+        res.status(200).json({ to });
+        console.log("ey ey cv signup")
       } else {
-        console.log("the passwords don't match");
       }
     })
     .then(() => {
-      console.log('Member saved successfully');
+      console.log('Member saved successfully!!!!');
       mongoose.disconnect();
+     
     })
     .catch(err => {
       console.log(err);
     });
-
-  
 });
+
 module.exports=router;
 
