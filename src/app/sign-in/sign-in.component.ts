@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,33 +10,41 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignInComponent implements OnInit {
 
-  email:string="";
-  password:string="";
-  
+  email: string = "";
+  password: string = "";
 
-  constructor(private http: HttpClient){}
-  
-   
-  signin(): void{
-    const data2={
-      emaillogin: this.email,
-      pwdlogin: this.password,
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private sharedService: SharedService
+  ) { }
+
+  signin(): void {
+    const data2 = {
+      email: this.email,
+      pwd: this.password,
     };
-    
-
-    this.http.post('http://127.0.0.1:3000/signin',data2).subscribe(
-      (Response)=>{
-        console.log(Response);
-      }, 
-      (error)=>{
-        console.log(error);
+  console.log("signin")
+    this.http.post('http://127.0.0.1:3000/signin', data2).subscribe(
+      (response: any) => {
+        console.log()
+        console.log('HTTP request successful:', response);
+        const token = response.t;
+        localStorage.setItem('token', token);
+        const exists = localStorage.getItem('token')
+        if (exists) {
+          this.sharedService.setLoggedIn(true); // set the value of loggedin to true
+          this.router.navigate(['/']);
+        }
+      },
+      (error) => {
+        console.log('HTTP request error:', error);
       }
     );
   }
   
+
   ngOnInit(): void {
-      
+
   }
-}
-
-
+}   

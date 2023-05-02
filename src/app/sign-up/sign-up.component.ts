@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Route,Router } from '@angular/router';
+import { Token } from '@angular/compiler';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -8,14 +10,14 @@ import { HttpClient } from '@angular/common/http';
 export class SignUpComponent implements OnInit {
   
   username:string="";
-  email:string="";
+  email:any="";
   pwd:string="";
   pwdagain:string="";
 
 
 
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient,private route:Router){}
 
    
     signup() : void{
@@ -29,13 +31,20 @@ export class SignUpComponent implements OnInit {
       
 
       this.http.post('http://127.0.0.1:3000/signup',data1).subscribe(
-        (Response)=>{
+        (Response :any)=>{
+          const token = Response.to;
+          console.log("hello");
+          localStorage.setItem('token',token);
+          this.route.navigate(['/'])
+
+        
           console.log(Response);
         }, 
         (error)=>{
           console.log(error);
         }
       )
+   
     
 
 
