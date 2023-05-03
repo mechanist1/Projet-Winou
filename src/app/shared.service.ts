@@ -7,6 +7,7 @@ export class SharedService {
 
   private loggedIn:boolean = false;
   private posts :any[]=[];
+  private user:any="";
   
 
   constructor() { }
@@ -23,6 +24,14 @@ export class SharedService {
 
   getisLoggedIn() {
     return this.loggedIn;
+    
+  }
+  setuser(data:any) {
+    this.user=data;
+    
+  }
+  getuser() {
+    return this.user;
     
   }
 

@@ -11,7 +11,7 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   p: any[] = [];
   a =Date.now();
-
+  user:any;
   constructor(private http: HttpClient,
               private router: Router,
               private sharedService: SharedService) {}
@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
       (response) => {
         this.p = response as any [];
         console.log(this.p);
-        console.log("done")
+        console.log("done");
+        this.user=this.sharedService.getuser();
+        console.log(this.user)
       },
       (error) => {
         console.log(error);

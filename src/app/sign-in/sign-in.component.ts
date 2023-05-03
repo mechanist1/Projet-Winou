@@ -27,24 +27,38 @@ export class SignInComponent implements OnInit {
   console.log("signin")
     this.http.post('http://127.0.0.1:3000/signin', data2).subscribe(
       (response: any) => {
-        console.log()
+        
         console.log('HTTP request successful:', response);
         const token = response.t;
         localStorage.setItem('token', token);
-        const exists = localStorage.getItem('token')
-        if (exists) {
-          this.sharedService.setLoggedIn(true); // set the value of loggedin to true
-          this.router.navigate(['/']);
-        }
+        const ex = localStorage.getItem('token')
+     
       },
       (error) => {
         console.log('HTTP request error:', error);
       }
     );
+    this.router.navigate(['/']);
   }
   
 
   ngOnInit(): void {
+    const exist =localStorage.getItem('token');
+    if(exist){
+      console.log(this.sharedService.getisLoggedIn());
+      this.sharedService.setLoggedIn(true);
+      const decodedToken = JSON.parse(atob(exist.split('.')[1]));
+      const user = decodedToken.username;
+      
+      this.sharedService.setuser(user);
+      console.log(this.sharedService.getisLoggedIn());
+
+      console.log("cbon",exist);
+    }
+    else{
+      console.log("mouch cbon")
+    }
+
 
   }
 }   

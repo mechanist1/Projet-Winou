@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,23 @@ import { SharedService } from '../shared.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
 
   }
 
   isLoggedIn() {
-    return this.sharedService.getisLoggedIn; // access the isLoggedIn property
+    return this.sharedService.getisLoggedIn(); // access the isLoggedIn property
+  }
+  logout(){
+    localStorage.removeItem('token');
+    console.log("item removed");
+    this.router.navigate(['/signin']);
+
+
   }
 
 }

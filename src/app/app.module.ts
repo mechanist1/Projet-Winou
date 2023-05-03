@@ -16,6 +16,7 @@ import { PostComponent } from './post/post.component';
 import { FindComponent } from './find/find.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
