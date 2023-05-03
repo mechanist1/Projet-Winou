@@ -27,7 +27,7 @@
         return res.status(401);
       }
 
-      const t = jwt.sign({ email: user.email, pwd: user.pwd }, 'Themechanist1');
+      const t = jwt.sign({ email: user.email, pwd: user.pwd,username :user.username }, 'Themechanist1');
 
       res.status(200).json({ t });
       console.log("sent sayé")

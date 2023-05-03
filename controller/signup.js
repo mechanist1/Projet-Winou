@@ -24,7 +24,7 @@ router.post('/signup', async(req, res) => {
         });
 
         await mem.save(); // return the Promise
-        const to = jwt.sign({ email: mem.email, mem: mem.pwd }, 'Themechanist1');
+        const to = jwt.sign({ email: mem.email, mem: mem.pwd , username :mem.username }, 'Themechanist1');
 
         res.status(200).json({ to });
         console.log("ey ey cv signup")
