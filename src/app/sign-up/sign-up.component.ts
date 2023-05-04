@@ -33,6 +33,8 @@
           pwdagain:this.pwdagain
         };
         
+    
+        
 
         this.http.post('http://127.0.0.1:3000/signup',data1).subscribe(
           (Response :any)=>{

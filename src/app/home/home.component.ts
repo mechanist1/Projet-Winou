@@ -10,6 +10,9 @@ import { Route, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   p: any[] = [];
+  all: any[] = [];
+  allposts: boolean=false;
+
   a =Date.now();
   user:any;
   constructor(private http: HttpClient,
@@ -21,9 +24,19 @@ export class HomeComponent implements OnInit {
       (response) => {
         this.p = response as any [];
         console.log(this.p);
-        console.log("done");
+        console.log("6 posts");
         this.user=this.sharedService.getuser();
-        console.log(this.user)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.http.get('http://127.0.0.1:3000/all').subscribe(
+      (response) => {
+        this.all = response as any [];
+        console.log(this.all);
+        console.log("all of posts");
+        this.user=this.sharedService.getuser();
       },
       (error) => {
         console.log(error);
@@ -39,5 +52,10 @@ export class HomeComponent implements OnInit {
       binary += String.fromCharCode(bytes[i]);
     }
     return btoa(binary);
+  }
+  allp(){
+    this.allposts=!(this.allposts);
+    console.log("button views posts works!!!!");
+    console.log(this.allposts)
   }
 }
