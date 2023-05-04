@@ -49,7 +49,7 @@ router.post('/post', upload.single('pic'), (req, res) => {
           type: data.type,
           place: data.place,
           pic: fs.readFileSync(targetPath),
-          dateofpost : a
+          dateofpost : a,
         }); 
 
         return pos.save();
@@ -88,3 +88,40 @@ router.get("/",(req,res)=>{
 });
 
 module.exports = router;
+router.get("/",(req,res)=>{
+  mongoose.connect(url, { useNewUrlParser: true })
+    .then(() => {
+      return post.find().sort({ dateofpost: -1 }).limit(6).exec();
+    })
+    .then(posts => {
+   
+      res.status(200).send(posts);
+      console.log("sending the posts , get request succesful")
+    })
+    .catch(err => {
+      console.log(err);
+    
+      res.status(500).send('Internal server error');
+    });
+});
+router.get("/all",(req,res)=>{
+  mongoose.connect(url, { useNewUrlParser: true })
+    .then(() => {
+      return post.find().sort({ dateofpost: -1 }).exec();
+    })
+    .then(posts => {
+   
+      res.status(200).send(posts);
+      console.log("sending the posts , get request succesful")
+    })
+    .catch(err => {
+      console.log(err);
+    
+      res.status(500).send('Internal server error');
+    });
+});
+
+
+
+module.exports = router;
+
